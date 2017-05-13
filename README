@@ -1,7 +1,7 @@
-stratis-seeder
+Radium-seeder
 ==============
 
-Stratis-seeder is a crawler for the Stratis network, which exposes a list
+Radium-seeder is a crawler for the Radium network, which exposes a list
 of reliable nodes via a built-in DNS server.
 
 Features:

@@ -37,7 +37,7 @@ public:
   CDnsSeedOpts() : nThreads(96), nDnsThreads(4), nPort(53), mbox(NULL), ns(NULL), host(NULL), tor(NULL), fDaemon(false), fUseTestNet(false), fWipeBan(false), fWipeIgnore(false) {}
 
   void ParseCommandLine(int argc, char **argv) {
-    static const char *help = "Stratis-seeder\n"
+    static const char *help = "Radium-seeder\n"
                               "Usage: %s -h <host> -n <ns> [-m <mbox>] [-t <threads>] [-p <port>]\n"
                               "\n"
                               "Options:\n"
@@ -401,13 +401,13 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"seed.dev0tion.com", ""};
+static const string mainnet_seeds[] = {"useast.projectradium.org", "eu.projectradium.org", "asia.projectradium.org", ""};
 static const string testnet_seeds[] = {""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("seed.stratisplatform.com", 16178), true);
+    db.Add(CService("useast.projectradium.org", 27913), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
@@ -459,10 +459,10 @@ int main(int argc, char **argv) {
   bool fDNS = true;
   if (opts.fUseTestNet) {
       printf("Using testnet.\n");
-      pchMessageStart[0] = 0x70;
-      pchMessageStart[1] = 0x35;
-      pchMessageStart[2] = 0x22;
-      pchMessageStart[3] = 0x05;
+      pchMessageStart[0] = 0x2a;
+      pchMessageStart[1] = 0x7c;
+      pchMessageStart[2] = 0xcb;
+      pchMessageStart[3] = 0xab;
       seeds = testnet_seeds;
       fTestNet = true;
   }
